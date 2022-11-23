@@ -7,6 +7,10 @@ from torch.autograd import Variable as V
 
 class TrainFramework():
     def __init__(self, net, loss, lr=3e-4, evalmode=False, num_classes=7):
+        # 전달받는 net의 인자값은
+        # train_nia.py 파일의
+        # solver = TrainFramework(model, Loss, init_learning_rate, num_classes=num_classes) 에서
+        # model을 받는 것인가요?
         self.net = net(num_classes=num_classes).cuda()
         self.net = torch.nn.DataParallel(self.net, device_ids=range(torch.cuda.device_count()))
         self.optimizer = torch.optim.Adam(params=self.net.parameters(), lr=lr)
