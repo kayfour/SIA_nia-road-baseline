@@ -29,6 +29,8 @@ def train_models(model, name, crop_size=(1024, 1024), init_learning_rate=0.0003,
     #trainlist = list(map(lambda x: x[:-8], imagelist))
 
     solver = TrainFramework(model, Loss, init_learning_rate, num_classes=num_classes)
+    # 호출된 train_framework.py의 TrainFramework로 넘겨주는데,
+    # 사용자에게 인자값으로 받은 모델(예,Unet)을 TrainFramework 클래스의 net으로 넘겨주는 건가요?
     if load != '':
         print('Loading...')
         solver.load(load)
